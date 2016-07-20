@@ -198,9 +198,6 @@ int stun_send_udp_response(int sd, struct stun_hdr* stun_cli, struct sockaddr* a
 	stun_add_xormapped_addr(stun_cli->msg_id, buffer+msg_len, &attr_len, addr);
 	msg_len += attr_len;
 
-	stun_add_software(buffer+msg_len, &attr_len);
-	msg_len += attr_len;
-
 	stun_set_msg_len(&stun_srv, msg_len - sizeof(struct stun_hdr));
 
 	memcpy(buffer, &stun_srv, sizeof(stun_srv));
@@ -237,9 +234,6 @@ int stun_send_tcp_response(int sd, struct stun_hdr* stun_cli)
 	msg_len += attr_len;
 
 	stun_add_xormapped_addr(stun_cli->msg_id, buffer+msg_len, &attr_len, &peer);
-	msg_len += attr_len;
-
-	stun_add_software(buffer+msg_len, &attr_len);
 	msg_len += attr_len;
 
 	stun_set_msg_len(&stun_srv, msg_len - sizeof(struct stun_hdr));
