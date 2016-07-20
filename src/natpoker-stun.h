@@ -21,6 +21,8 @@
 #define STUN_ATTR_FINGERPRINT       0x8028
 #define STUN_ATTR_RESPONSE_ORIGIN   0x802b
 
+#define STUN_ATTR_TRANSACTION_TRANSMIT_COUNTER 0x8fff
+
 #define NP_NAME "NatPoker"
 #define NP_VERSION "0.1"
 #define NP_URL "https://github.com/nat-poker/natpoker-srv"
