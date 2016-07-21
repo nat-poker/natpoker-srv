@@ -178,6 +178,19 @@ int stun_add_software(char* buffer, int* len)
 	free(attr);
 	return 1;
 }
+
+int stun_add_transaction_tx_counter(char *buffer, int *len, uint8_t req, uint8_t resp)
+{
+	struct stun_attr_transaction_tx_counter = { 0 };
+	attr.type = htons(STUN_ATTR_TRANSACTION_TRANSMIT_COUNTER);
+	attr.len  = htons(8);
+	attr.req  = 0;
+	attr.resp = 0; // This server is currently stateless, and the RFC
+                       // requires this to be zero
+	return 1;
+}
+
+
 int stun_send_udp_response(int sd, struct stun_hdr* stun_cli, struct sockaddr* addr, socklen_t peer_len)
 {
 	int rc;

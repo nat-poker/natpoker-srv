@@ -70,6 +70,15 @@ struct stun_attr_sw
 	char     str[0];
 } __attribute__((packed));
 
+struct stun_attr_transaction_tx_counter
+{
+	uint16_t type;
+	uint16_t len;
+	uint16_t reserved;
+	uint8_t  req;
+	uint8_t  resp;
+}
+
 void stun_set_msg_type(struct stun_hdr *msg, uint16_t type);
 
 void stun_set_msg_len(struct stun_hdr *msg, uint16_t len);
